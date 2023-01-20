@@ -51,9 +51,9 @@ export default {
 <style scoped lang="scss">
 .sub-title {
   padding-left: 20rpx;
-  margin-bottom: 20rpx;
   font-size: 30rpx;
   color: $u-tips-color;
+  margin: 20rpx 0;
 }
 
 .card-wrapper {

@@ -1,5 +1,12 @@
 <template>
   <view class="toolbox">
+    <u-search
+        placeholder="请输入名称进行搜索"
+        v-model="keyword"
+        :showAction="false"
+        borderColor="#dadbde"
+        shape="square"
+        clearabled/>
     <card-box title="常用工具" :grid-list="gridList"/>
   </view>
 </template>
@@ -30,7 +37,8 @@ export default {
           path: '/fund',
           isOnline: false
         },
-      ]
+      ],
+      keyword: ''
     }
   },
 }

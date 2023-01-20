@@ -1,0 +1,37 @@
+{
+  "easycom": {
+    "^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+  },
+  "pages": [
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "主页"
+      }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    },
+    {
+      "path": "pages/rate-calculator/rate-calculator",
+      "style": {
+        "navigationBarTitleText": "商户费率计算器",
+        "navigationBarBackgroundColor": "#3c9cff",
+        "navigationBarTextStyle": "white",
+        // 隐藏ios键盘完成按钮
+        "app-plus": {
+          "softinputNavBar": "none"
+        }
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "前端Tools",
+    "navigationBarBackgroundColor": "#3c9cff",
+    "backgroundColor": "#ffffff"
+  }
+}

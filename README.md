@@ -6,7 +6,9 @@
 
 npm install
 
-npm run serve
+// npm run serve
+
+npm run dev:mp-weixin
 
 npm run build
 

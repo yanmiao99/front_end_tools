@@ -5,16 +5,15 @@
       <view class="card-item u-border"
             v-for="item in gridList"
             :key="item.name"
-            @click="handleGridClick(item)"
-      >
+            @click="handleGridClick(item)">
         <view class="card-top">
-          <image class="image u-border" :src="item.icon"/>
+          <image class="image" :src="item.icon"/>
           <h3 class="name u-line-1">{{ item.name }}</h3>
         </view>
         <text class="desc u-line-2">{{ item.desc }}</text>
       </view>
-
     </view>
+    <u-toast ref="uToast"></u-toast>
   </view>
 </template>
 
@@ -33,10 +32,17 @@ export default {
     }
   },
   methods: {
-    handleGridClick(item) {
-      uni.$u.route({
-        url: `pages${item.path}${item.path}`,
-      })
+    handleGridClick({path, isOnline}) {
+      if (isOnline) {
+        uni.$u.route({
+          url: `pages${path}${path}`,
+        })
+      } else {
+        this.$refs.uToast.show({
+          type: 'default',
+          message: "应用开发中,敬请期待...",
+        })
+      }
     },
   }
 }

@@ -7,8 +7,10 @@
 <script>
 
 import CardBox from "@/components/card-box.vue";
+import share from "@/mixins/share"
 
 export default {
+  mixins: [share],
   name: "toolbox",
   components: {CardBox},
   data() {
@@ -18,8 +20,16 @@ export default {
           icon: require("@/static/toolbox/calculator.png"),
           name: '商户费率计算器',
           desc: '用于计算商户在客人扫码付款后, 最终能够拿到多少钱',
-          path: '/rate-calculator'
-        }
+          path: '/rate-calculator',
+          isOnline: true,
+        },
+        {
+          icon: require("@/static/toolbox/fund.png"),
+          name: '基金年化计算器',
+          desc: '用于计算基金年化收益后的每天收益',
+          path: '/fund',
+          isOnline: false
+        },
       ]
     }
   },

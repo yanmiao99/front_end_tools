@@ -16,10 +16,15 @@
       }
     },
     {
+      "path": "pages/mid-button/mid-button",
+      "style": {
+        "navigationBarTitleText": "tabbar中间按钮"
+      }
+    },
+    {
       "path": "pages/rate-calculator/rate-calculator",
       "style": {
         "navigationBarTitleText": "商户费率计算器",
-        "navigationBarBackgroundColor": "#3c9cff",
         "navigationBarTextStyle": "white",
         // 隐藏ios键盘完成按钮
         "app-plus": {
@@ -31,7 +36,7 @@
   // 配置tabbar导航栏
   "tabBar": {
     "borderStyle": "black",
-    "selectedColor": "#579AF8",
+    "selectedColor": "#8F97F8",
     "color": "#333333",
     "list": [
       {
@@ -51,7 +56,7 @@
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "前端Tools",
-    "navigationBarBackgroundColor": "#3c9cff",
+    "navigationBarBackgroundColor": "#8F97F8",
     "backgroundColor": "#ffffff"
   }
 }

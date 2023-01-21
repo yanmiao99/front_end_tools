@@ -8,7 +8,7 @@ Vue.use(uView);
 uni.$u.setConfig({
     props: {
         button: {
-            color: '#8F97F8'
+            color: '#8486F1'
         }
     }
 })

@@ -12,13 +12,8 @@
     {
       "path": "pages/mine/mine",
       "style": {
-        "navigationBarTitleText": "我的"
-      }
-    },
-    {
-      "path": "pages/mid-button/mid-button",
-      "style": {
-        "navigationBarTitleText": "tabbar中间按钮"
+        // 我的
+        "navigationBarTitleText": ""
       }
     },
     {
@@ -36,7 +31,7 @@
   // 配置tabbar导航栏
   "tabBar": {
     "borderStyle": "black",
-    "selectedColor": "#8F97F8",
+    "selectedColor": "#8486F1",
     "color": "#333333",
     "list": [
       {
@@ -56,7 +51,7 @@
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "前端Tools",
-    "navigationBarBackgroundColor": "#8F97F8",
+    "navigationBarBackgroundColor": "#8486F1",
     "backgroundColor": "#ffffff"
   }
 }

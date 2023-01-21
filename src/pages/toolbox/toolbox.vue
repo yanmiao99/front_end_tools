@@ -13,13 +13,12 @@
 
 <script>
 
-import CardBox from "@/components/card-box.vue";
 import share from "@/mixins/share"
 
 export default {
   mixins: [share],
   name: "toolbox",
-  components: {CardBox},
+  components: {},
   data() {
     return {
       gridList: [
@@ -41,6 +40,7 @@ export default {
       keyword: ''
     }
   },
+  methods: {}
 }
 </script>
 

@@ -26,6 +26,17 @@
           "softinputNavBar": "none"
         }
       }
+    },
+    {
+      "path": "pages/interest-calculator/interest-calculator",
+      "style": {
+        "navigationBarTitleText": "利息计算器",
+        "navigationBarTextStyle": "white",
+        // 隐藏ios键盘完成按钮
+        "app-plus": {
+          "softinputNavBar": "none"
+        }
+      }
     }
   ],
   // 配置tabbar导航栏

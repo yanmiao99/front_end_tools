@@ -30,11 +30,11 @@ export default {
           isOnline: true,
         },
         {
-          icon: require("@/static/toolbox/fund.png"),
-          name: '基金年化计算器',
-          desc: '用于计算基金年化收益后的每天收益',
-          path: '/fund',
-          isOnline: false
+          icon: require("@/static/toolbox/interest.png"),
+          name: '利息计算器',
+          desc: '用于每份钱的投资收益',
+          path: '/interest-calculator',
+          isOnline: true
         },
       ],
       keyword: ''

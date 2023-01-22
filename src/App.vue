@@ -15,4 +15,5 @@ export default {
 html, body {
   background: #F5F5FA;
 }
+@import url("./static/icon/icon.css");
 </style>

@@ -40,9 +40,10 @@
     },
     {
       "path": "pages/avatar-generate/avatar-generate",
+      // 关闭顶栏
       "style": {
-        "navigationBarTitleText": "头像框生成器",
-        "navigationBarTextStyle": "white"
+        "transparentTitle": "always",
+        "navigationStyle": "custom"
       }
     }
   ],

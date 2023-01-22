@@ -37,6 +37,13 @@
           "softinputNavBar": "none"
         }
       }
+    },
+    {
+      "path": "pages/avatar-generate/avatar-generate",
+      "style": {
+        "navigationBarTitleText": "头像框生成器",
+        "navigationBarTextStyle": "white"
+      }
     }
   ],
   // 配置tabbar导航栏

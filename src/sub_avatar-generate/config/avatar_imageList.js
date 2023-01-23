@@ -6,43 +6,43 @@ const avatar_imageList = [
         imageList: [
             {
                 key: '1.1',
-                src: require('@/static/avatar-generate/new/NA.png')
+                src: require('../static/avatar-generate/new/NA.png')
             },
             {
                 key: '1.2',
-                src: require('@/static/avatar-generate/new/NB.png')
+                src: require('../static/avatar-generate/new/NB.png')
             },
             {
                 key: '1.3',
-                src: require('@/static/avatar-generate/new/NC.png')
+                src: require('../static/avatar-generate/new/NC.png')
             },
             {
                 key: '1.4',
-                src: require('@/static/avatar-generate/new/ND.png')
+                src: require('../static/avatar-generate/new/ND.png')
             },
             {
                 key: '1.9',
-                src: require('@/static/avatar-generate/new/NE.png')
+                src: require('../static/avatar-generate/new/NE.png')
             },
             {
                 key: '1.6',
-                src: require('@/static/avatar-generate/new/NF.png')
+                src: require('../static/avatar-generate/new/NF.png')
             },
             {
                 key: '1.7',
-                src: require('@/static/avatar-generate/new/NG.png')
+                src: require('../static/avatar-generate/new/NG.png')
             },
             {
                 key: '1.8',
-                src: require('@/static/avatar-generate/new/NH.png')
+                src: require('../static/avatar-generate/new/NH.png')
             },
             {
                 key: '1.9',
-                src: require('@/static/avatar-generate/new/NI.png')
+                src: require('../static/avatar-generate/new/NI.png')
             },
             {
                 key: '1.10',
-                src: require('@/static/avatar-generate/new/NJ.png')
+                src: require('../static/avatar-generate/new/NJ.png')
             }
         ]
     },
@@ -53,27 +53,27 @@ const avatar_imageList = [
         imageList: [
             {
                 key: '1.1',
-                src: require('@/static/avatar-generate/gradual/1.png')
+                src: require('../static/avatar-generate/gradual/1.png')
             },
             {
                 key: '1.2',
-                src: require('@/static/avatar-generate/gradual/2.png')
+                src: require('../static/avatar-generate/gradual/2.png')
             },
             {
                 key: '1.3',
-                src: require('@/static/avatar-generate/gradual/3.png')
+                src: require('../static/avatar-generate/gradual/3.png')
             },
             {
                 key: '1.4',
-                src: require('@/static/avatar-generate/gradual/4.png')
+                src: require('../static/avatar-generate/gradual/4.png')
             },
             {
                 key: '1.5',
-                src: require('@/static/avatar-generate/gradual/5.png')
+                src: require('../static/avatar-generate/gradual/5.png')
             },
             {
                 key: '1.6',
-                src: require('@/static/avatar-generate/gradual/6.png')
+                src: require('../static/avatar-generate/gradual/6.png')
             }
         ]
     },
@@ -84,31 +84,31 @@ const avatar_imageList = [
         imageList: [
             {
                 key: '1.1',
-                src: require('@/static/avatar-generate/simple/2.png')
+                src: require('../static/avatar-generate/simple/2.png')
             },
             {
                 key: '1.2',
-                src: require('@/static/avatar-generate/simple/3.png')
+                src: require('../static/avatar-generate/simple/3.png')
             },
             {
                 key: '1.3',
-                src: require('@/static/avatar-generate/simple/4.png')
+                src: require('../static/avatar-generate/simple/4.png')
             },
             {
                 key: '1.4',
-                src: require('@/static/avatar-generate/simple/5.png')
+                src: require('../static/avatar-generate/simple/5.png')
             },
             {
                 key: '1.5',
-                src: require('@/static/avatar-generate/simple/6.png')
+                src: require('../static/avatar-generate/simple/6.png')
             },
             {
                 key: '1.6',
-                src: require('@/static/avatar-generate/simple/7.png')
+                src: require('../static/avatar-generate/simple/7.png')
             },
             {
                 key: '1.7',
-                src: require('@/static/avatar-generate/simple/8.png')
+                src: require('../static/avatar-generate/simple/8.png')
             }
         ]
     },
@@ -119,11 +119,11 @@ const avatar_imageList = [
         imageList: [
             {
                 key: '1.1',
-                src: require('@/static/avatar-generate/other/1.png')
+                src: require('../static/avatar-generate/other/1.png')
             },
             {
                 key: '1.2',
-                src: require('@/static/avatar-generate/other/2.png')
+                src: require('../static/avatar-generate/other/2.png')
             }
         ]
     },

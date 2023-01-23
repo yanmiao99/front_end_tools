@@ -12,41 +12,74 @@
     {
       "path": "pages/mine/mine",
       "style": {
-        // 我的
         "navigationBarTitleText": ""
-      }
-    },
-    {
-      "path": "pages/rate-calculator/rate-calculator",
-      "style": {
-        "navigationBarTitleText": "商户费率计算器",
-        "navigationBarTextStyle": "white",
-        // 隐藏ios键盘完成按钮
-        "app-plus": {
-          "softinputNavBar": "none"
-        }
-      }
-    },
-    {
-      "path": "pages/interest-calculator/interest-calculator",
-      "style": {
-        "navigationBarTitleText": "利息计算器",
-        "navigationBarTextStyle": "white",
-        // 隐藏ios键盘完成按钮
-        "app-plus": {
-          "softinputNavBar": "none"
-        }
-      }
-    },
-    {
-      "path": "pages/avatar-generate/avatar-generate",
-      // 关闭顶栏
-      "style": {
-        "navigationStyle": "custom",
-        "navigationBarTextStyle": "white"
+        // 我的
       }
     }
   ],
+  // 分包
+  "subPackages": [
+    {
+      "name": "avatar-generate",
+      "root": "sub_avatar-generate",
+      "pages": [
+        {
+          "path": "avatar-generate/avatar-generate",
+          "style": {
+            "navigationStyle": "custom",
+            "navigationBarTextStyle": "white"
+          }
+        }
+      ]
+    },
+    {
+      "name": "interest-calculator",
+      "root": "sub_interest-calculator",
+      "pages": [
+        {
+          "path": "interest-calculator/interest-calculator",
+          "style": {
+            "navigationBarTitleText": "利息计算器",
+            "navigationBarTextStyle": "white",
+            // 隐藏ios键盘完成按钮
+            "app-plus": {
+              "softinputNavBar": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "rate-calculator",
+      "root": "sub_rate-calculator",
+      "pages": [
+        {
+          "path": "rate-calculator/rate-calculator",
+          "style": {
+            "navigationBarTitleText": "商户费率计算器",
+            "navigationBarTextStyle": "white",
+            // 隐藏ios键盘完成按钮
+            "app-plus": {
+              "softinputNavBar": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  // 预加载分包
+  "preloadRule": {
+    "pages/toolbox/toolbox": {
+      // 网络环境
+      "network": "all",
+      // 打开首页后需要预加载的
+      "packages": [
+        "avatar-generate",
+        "interest-calculator",
+        "rate-calculator"
+      ]
+    }
+  },
   // 配置tabbar导航栏
   "tabBar": {
     "borderStyle": "black",

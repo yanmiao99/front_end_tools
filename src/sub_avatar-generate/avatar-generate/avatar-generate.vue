@@ -1,12 +1,13 @@
 <template>
   <view class="content">
-    <image src="@/static/avatar-generate/background.jpg" class="all-back"></image>
+    <image src="../static/avatar-generate/background.jpg" class="all-back"></image>
     <view class="top-content">
       <u-navbar
           title="　"
           :autoBack="true"
           :border="false"
           bgColor="transparent"
+          leftIconColor="#fff"
       >
       </u-navbar>
       <view class="top-title">
@@ -69,13 +70,11 @@
 </template>
 
 <script>
-import _app from '@/utils/QS-SharePoster/app.js';
-import {getSharePoster} from '@/utils/QS-SharePoster/QS-SharePoster.js';
-
-
+import _app from '../utils/QS-SharePoster/app.js';
+import {getSharePoster} from '../utils/QS-SharePoster/QS-SharePoster.js';
 import saveAlbum from "@/utils/saveAlbum";
 import share from "@/mixins/share"
-import avatar_imageList from "@/config/avatar_imageList";
+import avatar_imageList from "../config/avatar_imageList";
 
 export default {
   mixins: [share],
@@ -85,7 +84,7 @@ export default {
       canvasId: 'default_PosterCanvasId',
       wxCode: '',
       avatarImage: '',
-      currentFrame: require('@/static/avatar-generate/new/NA.png'),
+      currentFrame: require('../static/avatar-generate/new/NA.png'),
       currentIndex: 0,
       imageList: avatar_imageList
     };

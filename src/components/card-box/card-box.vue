@@ -35,7 +35,7 @@ export default {
     handleGridClick({path, isOnline}) {
       if (isOnline) {
         uni.$u.route({
-          url: `pages${path}${path}`,
+          url: path,
         })
       } else {
         this.$refs.uToast.show({

@@ -126,7 +126,7 @@ const avatar_imageList = [
                 src: require('@/static/avatar-generate/other/2.png')
             }
         ]
-    }
+    },
 ];
 
 export default avatar_imageList

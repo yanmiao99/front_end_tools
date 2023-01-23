@@ -42,8 +42,8 @@
       "path": "pages/avatar-generate/avatar-generate",
       // 关闭顶栏
       "style": {
-        "transparentTitle": "always",
-        "navigationStyle": "custom"
+        "navigationStyle": "custom",
+        "navigationBarTextStyle": "white"
       }
     }
   ],

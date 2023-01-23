@@ -2,6 +2,13 @@
   <view class="content">
     <image src="@/static/avatar-generate/background.jpg" class="all-back"></image>
     <view class="top-content">
+      <u-navbar
+          title="　"
+          :autoBack="true"
+          :border="false"
+          bgColor="transparent"
+      >
+      </u-navbar>
       <view class="top-title">
         <view class="title-unit"
               :class="{ 'title-select': item.selected }"
@@ -25,12 +32,12 @@
     </view>
     <view class="image-card">
       <view class="photo-main-view">
-        <view class="avatar-div " id="avatar-container">
-          <image class="img" id="avatar-img" :src="avatarImage"></image>
+        <view class="avatar-div">
+          <image class="img" :src="avatarImage"></image>
 
           <view class="empty-view " v-if="!avatarImage">
             <image class="empty"
-                   src="@/static/avatar-generate/avatar_empty.svg"></image>
+                   src="@/static/images/wx-default-avatar.jpeg"/>
           </view>
 
           <image class="avatar-default " :src="currentFrame" v-if="currentFrame"></image>
@@ -40,9 +47,6 @@
             <view class="icon-zuo iconfont" v-if="showSwitch(-1)" @click="switchAvatar(-1)"></view>
             <view class="icon-you iconfont" v-if="showSwitch(1)" @click="switchAvatar(1)"></view>
           </view>
-
-          <button class="action-btn btn-margin">分享程序</button>
-
           <button
               class="action-btn btn-margin"
               open-type="chooseAvatar"
@@ -352,68 +356,58 @@ export default {
   }
 }
 
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
-}
-
-.avatar-div {
-  height: 380rpx;
-  margin-right: 40rpx;
-  position: relative;
-  width: 380rpx;
-}
-
-.avatar-div,
-.empty-view {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-box-pack: center;
-  -webkit-box-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 1;
-}
-
-.empty {
-  height: 100px;
-  margin-bottom: 24px;
-  width: 100px;
-}
-
-.img {
-  background-color: #fff;
-  border-radius: 48rpx;
-  height: 360rpx;
-  position: absolute;
-  width: 360rpx;
-  z-index: 0;
-}
-
-.avatar-default {
-  border-radius: 48rpx;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 10;
-}
-
-.container {
-  background-color: #fbebe1;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
 .photo-main-view {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 690rpx;
   margin: 30rpx 30rpx 0;
+
+  .avatar-div {
+    height: 380rpx;
+    margin-right: 40rpx;
+    position: relative;
+    width: 380rpx;
+    overflow: hidden;
+
+    .empty {
+      height: 300rpx;
+      width: 300rpx;
+    }
+
+    .img {
+      background-color: #fff;
+      border-radius: 48rpx;
+      height: 360rpx;
+      position: absolute;
+      width: 360rpx;
+      z-index: 0;
+    }
+
+    .avatar-default {
+      border-radius: 48rpx;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+  }
+
+  .avatar-div, .empty-view {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+  }
+
 }
 
 .icon-div {

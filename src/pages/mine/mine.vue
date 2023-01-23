@@ -56,7 +56,7 @@ export default {
   components: {},
   data() {
     return {
-      avatar: require("@/static/mine/login-default-avatar.png"),
+      avatar: require("@/static/logo.png"),
       cellList: [
         {
           icon: require("@/static/mine/log.png"),

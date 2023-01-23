@@ -1,10 +1,13 @@
 <template>
   <view class="content">
-    <image src="../../static/background.jpg" class="all-back"></image>
+    <image src="@/static/avatar-generate/background.jpg" class="all-back"></image>
     <view class="top-content">
       <view class="top-title">
-        <view class="title-unit" :class="{ 'title-select': item.selected }" v-for="(item, index) in imageList"
-              :key="item.key" @click="itemClick(item)">
+        <view class="title-unit"
+              :class="{ 'title-select': item.selected }"
+              v-for="item in imageList"
+              :key="item.key"
+              @click="itemClick(item)">
           {{ item.title }}
         </view>
       </view>
@@ -20,42 +23,44 @@
         </view>
       </scroll-view>
     </view>
-
     <view class="image-card">
       <view class="photo-main-view">
-        <!--  -->
         <view class="avatar-div " id="avatar-container">
           <image class="img" id="avatar-img" :src="avatarImage"></image>
 
           <view class="empty-view " v-if="!avatarImage">
             <image class="empty"
-                   src="../../static/images/avatar_empty.svg"></image>
+                   src="@/static/avatar-generate/avatar_empty.svg"></image>
           </view>
 
           <image class="avatar-default " :src="currentFrame" v-if="currentFrame"></image>
         </view>
-
-        <view class="ctlbtn">
+        <view class="btn-group">
           <view class="icon-div btn-margin">
             <view class="icon-zuo iconfont" v-if="showSwitch(-1)" @click="switchAvatar(-1)"></view>
             <view class="icon-you iconfont" v-if="showSwitch(1)" @click="switchAvatar(1)"></view>
           </view>
-          <view v-if="userInfo" class="action-btn btn-margin" @click="getUserProfile()">获取头像</view>
-          <button class="action-btn btn-margin" v-else open-type="getUserInfo" @click="getUserProfile()">获取头像
+
+          <button class="action-btn btn-margin">分享程序</button>
+
+          <button
+              class="action-btn btn-margin"
+              open-type="chooseAvatar"
+              @chooseavatar="getChooseAvatar">
+            获取头像
           </button>
-          <button class="action-btn btn-primary" @click="shareFc()">保存头像</button>
+
+          <button class="action-btn btn-primary" @click="saveAvatar">保存头像</button>
+
         </view>
       </view>
     </view>
-
-    <view class="hideCanvasView">
-      <canvas
-          class="hideCanvas"
-          id="default_PosterCanvasId"
-          canvas-id="default_PosterCanvasId"
-          :style="{ width: (poster.width || 10) + 'px', height: (poster.height || 10) + 'px' }"
-      ></canvas>
-    </view>
+    <canvas
+        class="hideCanvas"
+        id="default_PosterCanvasId"
+        canvas-id="default_PosterCanvasId"
+        :style="{ width: (poster.width || 10) + 'px', height: (poster.height || 10) + 'px' }"
+    ></canvas>
   </view>
 </template>
 
@@ -63,187 +68,36 @@
 import _app from '@/utils/QS-SharePoster/app.js';
 import {getSharePoster} from '@/utils/QS-SharePoster/QS-SharePoster.js';
 
-const IMAGE_LIST = [
-  {
-    key: '1',
-    title: '国庆新款',
-    selected: true,
-    imageList: [
-      {
-        key: '1.1',
-        src: '../../static/images/new/NA.png'
-      },
-      {
-        key: '1.2',
-        src: '../../static/images/new/NB.png'
-      },
-      {
-        key: '1.3',
-        src: '../../static/images/new/NC.png'
-      },
-      {
-        key: '1.4',
-        src: '../../static/images/new/ND.png'
-      },
-      {
-        key: '1.9',
-        src: '../../static/images/new/NE.png'
-      },
-      {
-        key: '1.6',
-        src: '../../static/images/new/NF.png'
-      },
-      {
-        key: '1.7',
-        src: '../../static/images/new/NG.png'
-      },
-      {
-        key: '1.8',
-        src: '../../static/images/new/NH.png'
-      },
-      {
-        key: '1.9',
-        src: '../../static/images/new/NI.png'
-      },
-      {
-        key: '1.10',
-        src: '../../static/images/new/NJ.png'
-      }
-    ]
-  },
-  {
-    key: '2',
-    title: '渐变国旗',
-    selected: false,
-    imageList: [
-      {
-        key: '1.1',
-        src: '../../static/images/gradual/1.png'
-      },
-      {
-        key: '1.2',
-        src: '../../static/images/gradual/2.png'
-      },
-      {
-        key: '1.3',
-        src: '../../static/images/gradual/3.png'
-      },
-      {
-        key: '1.4',
-        src: '../../static/images/gradual/4.png'
-      },
-      {
-        key: '1.5',
-        src: '../../static/images/gradual/5.png'
-      },
-      {
-        key: '1.6',
-        src: '../../static/images/gradual/6.png'
-      }
-    ]
-  },
-  {
-    key: '3',
-    title: '质朴国旗',
-    selected: false,
-    imageList: [
-      {
-        key: '1.1',
-        src: '../../static/images/simple/2.png'
-      },
-      {
-        key: '1.2',
-        src: '../../static/images/simple/3.png'
-      },
-      {
-        key: '1.3',
-        src: '../../static/images/simple/4.png'
-      },
-      {
-        key: '1.4',
-        src: '../../static/images/simple/5.png'
-      },
-      {
-        key: '1.5',
-        src: '../../static/images/simple/6.png'
-      },
-      {
-        key: '1.6',
-        src: '../../static/images/simple/7.png'
-      },
-      {
-        key: '1.7',
-        src: '../../static/images/simple/8.png'
-      }
-    ]
-  },
-  {
-    key: '4',
-    title: '其他',
-    selected: false,
-    imageList: [
-      {
-        key: '1.1',
-        src: '../../static/images/other/1.png'
-      },
-      {
-        key: '1.2',
-        src: '../../static/images/other/2.png'
-      }
-    ]
-  }
-];
+
+import saveAlbum from "@/utils/saveAlbum";
+import share from "@/mixins/share"
+import avatar_imageList from "@/config/avatar_imageList";
+
 export default {
+  mixins: [share],
   data() {
     return {
       poster: {},
-      posterImage: '',
       canvasId: 'default_PosterCanvasId',
-      userInfo: '',
-      code: '',
+      wxCode: '',
       avatarImage: '',
-      currentFrame: '../../static/images/new/NA.png',
+      currentFrame: require('@/static/avatar-generate/new/NA.png'),
       currentIndex: 0,
-      imageList: IMAGE_LIST
+      imageList: avatar_imageList
     };
   },
   onLoad() {
     // #ifdef MP-WEIXIN
-    let _this = this;
     uni.login({
       provider: 'weixin',
-      success: function (loginRes) {
-        _this.code = loginRes.code;
+      success: (loginRes) => {
+        this.wxCode = loginRes.code;
       },
-      fail: function (result) {
-      }
     });
-    this.init();
     // #endif
   },
-  onShareAppMessage: function () {
-    return {
-      title: '我刚刚换上了国庆头像，你也来领取一个吧',
-      desc: '领取你的国庆头像，为祖国加油',
-      imageUrl: '/static/share.jpg',
-      path: '/pages/index/index',
-      success: function (e) {
-        console.log(e);
-      }
-    };
-  },
-  onShareTimeline: function () {
-    return {
-      title: '我刚刚换上了国庆头像，你也来领取一个吧',
-      desc: '领取你的国庆头像，为祖国加油',
-      imageUrl: '/static/share.jpg',
-      path: '/pages/index/index',
-      success: function (e) {
-        console.log(e);
-      }
-    };
-  },
   methods: {
+    // 切换头像
     switchAvatar(num) {
       if ((num > 0 && this.currentIndex < this.getImageList().length - 1) || (num < 0 && this.currentIndex > 0)) {
         this.currentIndex += num;
@@ -258,6 +112,8 @@ export default {
         }
       }
     },
+
+    // 显示切换
     showSwitch(val) {
       let currentType = this.imageList.findIndex(data => data.selected);
       let res =
@@ -265,7 +121,9 @@ export default {
           (val > 0 && currentType >= this.imageList.length - 1 && this.currentIndex >= this.getImageList().length - 1);
       return !res;
     },
-    async shareFc() {
+
+    // 保存头像
+    async saveAvatar() {
       if (!this.avatarImage) {
         uni.showToast({
           title: '请先获取头像',
@@ -277,6 +135,7 @@ export default {
         uni.showLoading({
           title: '加载中'
         });
+
         _app.log('准备生成:' + new Date());
         const d = await getSharePoster({
           _this: this, //若在组件中使用 必传
@@ -312,119 +171,32 @@ export default {
           }
         });
         _app.log('海报生成成功, 时间:' + new Date() + '， 临时路径: ' + d.poster.tempFilePath);
-        this.posterImage = d.poster.tempFilePath;
-        this.savefile();
+        // 临时路径
+        let posterImage = d.poster.tempFilePath;
+        // 保存图片到本地相册
+        saveAlbum(posterImage)
       } catch (e) {
         uni.hideLoading();
         _app.hideLoading();
         _app.showToast(JSON.stringify(e));
       }
     },
-    saveImage() {
-      // #ifndef H5
-      uni.saveImageToPhotosAlbum({
-        filePath: this.poster.finalPath,
-        success(res) {
-          uni.showToast({
-            title: '保存成功'
-          });
-        }
-      });
-      // #endif
-    },
-    savefile() {
-      //获取相册授权
-      let _self = this;
-      uni.getSetting({
-        success(res) {
-          if (!res.authSetting['scope.writePhotosAlbum']) {
-            uni.authorize({
-              scope: 'scope.writePhotosAlbum',
-              success() {
-                //这里是用户同意授权后的回调
-                _self.saveImgToLocal();
-              },
-              fail(e) {
-                uni.hideLoading();
-                wx.showModal({
-                  content: '检测到您没打开下载图片功能权限，是否去设置打开？',
-                  confirmText: '确认',
-                  cancelText: '取消',
-                  success: function (res) {
-                    //点击“确认”时打开设置页面
-                    if (res.confirm) {
-                      wx.openSetting();
-                    }
-                  }
-                });
-              }
-            });
-          } else {
-            //用户已经授权过了
-            _self.saveImgToLocal();
-          }
-        }
-      });
-    },
-    saveImgToLocal(e) {
-      let _self = this;
-      // uni.downloadFile({
-      // 	url: _self.posterImage, //图片地址
-      // 	success: res => {
-      // 		if (res.statusCode === 200) {
-      uni.saveImageToPhotosAlbum({
-        filePath: _self.posterImage,
-        success: function () {
-          uni.hideLoading();
-          uni.showToast({
-            title: '保存成功',
-            icon: 'none'
-          });
-        },
-        fail: function (AAAA) {
-          uni.hideLoading();
-          uni.showToast({
-            title: '保存失败',
-            icon: 'none'
-          });
-        }
-      });
-      // 		}
-      // 	},
-      // 	fail: res => {
-      // 		uni.hideLoading();
-      // 	}
-      // });
-    },
-    getNetworkImage(url) {
-      return new Promise((resolve, reject) => {
-        uni.downloadFile({
-          url,
-          success: e => {
-            const p = e.tempFilePath; //这个就是jpg地址
-            this.pic0 = p;
-            if (p.indexOf('json') > -1) {
-              reject(p);
-              return false;
-            }
-            resolve(p);
-          },
-          fail: r => {
-            reject(r);
-          }
-        });
-      });
-    },
+
+    // 点击每个头像
     imageClick(item, index) {
       this.currentIndex = index;
       this.currentFrame = item.src;
     },
+
+    // 头像滚动图
     getImageList() {
       let item = this.imageList.filter(data => {
         return data.selected;
       });
       return item[0].imageList;
     },
+
+    // tab栏切换
     itemClick(item) {
       this.currentIndex = 0;
       this.imageList.forEach(data => {
@@ -432,40 +204,42 @@ export default {
       });
       item.selected = true;
     },
-    init() {
-      this.userInfo = uni.getStorageSync('user_info');
-    },
-    getUserProfile(e) {
-      // #ifdef MP-WEIXIN
-      console.log(123);
-      uni.getUserProfile({
-        desc: '获取您的头像信息',
-        success: (result) => {
-          console.log(result);
-          let data = {
-            code: this.code,
-            signature: result.signature,
-            encrypted_data: result.encryptedData,
-            iv: result.iv,
-            userInfo: result.userInfo
-          };
-          let info = data.userInfo.avatarUrl;
-          this.avatarImage = info.substring(0, info.lastIndexOf('/') + 1) + '0';
-          uni.setStorageSync('user_info', data.userInfo);
-          this.init();
+
+    // 新版获取用户头像
+    getChooseAvatar(e) {
+      console.log(e);
+      let {avatarUrl} = e.detail;
+      uni.uploadFile({
+        url: 'https://tucdn.wpon.cn/api/upload',
+        filePath: avatarUrl,
+        name: 'image',
+        success: uploadFileRes => {
+          // 注意：这里返回的uploadFileRes.data 为JSON 需要自己去转换
+          let res = JSON.parse(uploadFileRes.data);
+
+          if (res.code === 200) {
+            let data = res.data
+            this.avatarImage = data.url
+          } else {
+            uni.showToast({
+              title: res.msg,
+              icon: 'error',
+              duration: 2000
+            });
+          }
         },
-        fail(fall) {
-          console.log(fall);
+        fail: (error) => {
+          uni.showToast({
+            title: error,
+            icon: 'error',
+            duration: 2000
+          });
+        },
+        complete: () => {
+          uni.hideLoading();
         }
       });
-      // #endif
-      // #ifndef MP-WEIXIN
-      uni.showToast({
-        title: '请在微信开发工具运行',
-        icon: 'none'
-      })
-      // #endif
-    }
+    },
   }
 };
 </script>
@@ -637,6 +411,7 @@ export default {
 .photo-main-view {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 690rpx;
   margin: 30rpx 30rpx 0;
 }
@@ -679,10 +454,6 @@ export default {
   border-radius: 48rpx;
   box-shadow: 0 12rpx 16rpx -8rpx rgba(255, 88, 35, 0.6);
   color: #fff;
-}
-
-.hideCanvasView {
-  position: relative;
 }
 
 .hideCanvas {

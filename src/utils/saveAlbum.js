@@ -19,11 +19,15 @@ const saveToAlbum = (url) => {
                                 uni.hideLoading();
                                 return uni.showToast({
                                     title: "保存成功！",
+                                    icon: 'success',
+                                    duration: 2000,
                                 });
                             },
                             fail: (res) => {
                                 console.log(res.errMsg);
                                 return uni.showToast({
+                                    icon: 'error',
+                                    duration: 2000,
                                     title: res.errMsg,
                                 });
                             },
@@ -49,6 +53,7 @@ const saveToAlbum = (url) => {
                                 } else if (res.cancel) {
                                     return uni.showToast({
                                         title: "已取消！",
+                                        duration: 2000,
                                     });
                                 }
                             },
@@ -63,6 +68,8 @@ const saveToAlbum = (url) => {
                         uni.hideLoading();
                         return uni.showToast({
                             title: "保存成功！",
+                            icon: 'success',
+                            duration: 2000,
                         });
                     },
                     fail: (res) => {
@@ -70,6 +77,8 @@ const saveToAlbum = (url) => {
                         console.log(res.errMsg);
                         return uni.showToast({
                             title: res.errMsg,
+                            icon: 'error',
+                            duration: 2000,
                         });
                     },
                     //无论成功失败都走的回调

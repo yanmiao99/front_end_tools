@@ -1,10 +1,14 @@
 <template>
   <view class="mine">
     <view class="header">
-      <image :src="avatar"/>
+      <view class="avatar">
+        <image :src="avatar" mode="aspectFill"/>
+      </view>
       <view class="header-info">
-        <h2>点击登录</h2>
-        <text>登录查看更多</text>
+        <button class="login-btn" open-type="chooseAvatar" @chooseavatar="getChooseAvatar">
+          <h2>点击登录</h2>
+          <text>登录查看更多</text>
+        </button>
       </view>
       <view class="water">
         <view class="water-c">
@@ -53,7 +57,6 @@ import saveAlbum from "@/utils/saveAlbum";
 
 export default {
   name: "mine",
-  components: {},
   data() {
     return {
       avatar: require("@/static/logo.png"),
@@ -95,6 +98,7 @@ export default {
     // }
   },
   methods: {
+    // 每一行点击
     handleCellClick({name}) {
       console.log(name);
       switch (name) {
@@ -103,13 +107,29 @@ export default {
           break
       }
     },
+    // 保存二维码
     handleSaveToAlbum() {
       const url = this.addAuthor.wx_code
       saveAlbum(url)
       uni.$u.sleep(500).then(() => {
         this.addAuthor.show = false
       })
-    }
+    },
+    // 登录授权
+    // 授权登录
+    getChooseAvatar(e) {
+      let {avatarUrl} = e.detail;
+      this.avatar = avatarUrl
+      uni.login({
+        provider: 'weixin',
+        onlyAuthorize: true, // 微信登录仅请求授权认证
+        success: (res) => {
+          console.log(res)
+          //这里获取的是用户的code，用来换取 openid、unionid、session_key 等信息，再将信息丢给后台自己的登录业务就行了
+        }
+      })
+
+    },
   }
 }
 </script>
@@ -126,18 +146,41 @@ export default {
     box-sizing: border-box;
     position: relative;
 
-    image {
+    .avatar {
       width: 150rpx;
       height: 150rpx;
-      border-radius: 50%;
       border: 2px solid #fff;
+      border-radius: 50%;
       padding: 20rpx;
       box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      image {
+        width: 90%;
+        height: 90%;
+        border-radius: 50%;
+        overflow: hidden;
+      }
     }
 
+
     .header-info {
-      margin-left: 40rpx;
+      margin-left: 30rpx;
       color: #fff;
+
+      .login-btn {
+        border: none;
+        background: none;
+        outline: none;
+        color: #fff;
+        line-height: 50rpx;
+
+        &::after {
+          border: none !important;
+        }
+      }
 
       h2 {
         font-size: 36rpx;
@@ -215,9 +258,6 @@ export default {
       width: 50rpx !important;
       height: 50rpx !important;
     }
-  }
-
-  .addAuthorCode {
   }
 
 }

@@ -20,5 +20,12 @@ const gridList = [
         path: 'sub_avatar-generate/avatar-generate/avatar-generate',
         isOnline: true
     },
+    {
+        icon: require("@/static/toolbox/dialogue-video.png"),
+        name: '情侣视频',
+        desc: '收集了比较多的情侣对话视频',
+        path: 'sub_dialogue-video/dialogue-video/dialogue-video',
+        isOnline: true
+    },
 ]
 export default gridList

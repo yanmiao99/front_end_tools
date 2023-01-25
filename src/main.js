@@ -14,6 +14,9 @@ uni.$u.setConfig({
 })
 
 Vue.config.productionTip = false
+Vue.prototype.$http = uni.$u.http
+
+
 
 App.mpType = 'app'
 

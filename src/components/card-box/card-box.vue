@@ -2,18 +2,21 @@
   <view>
     <h2 class="sub-title">{{ title }}</h2>
     <view class="card-wrapper">
-      <view class="card-item u-border"
-            v-for="item in gridList"
+      <template v-for="item in gridList">
+        <view
+            v-if="item.isShow"
+            class="card-item u-border"
             :key="item.name"
             @click="handleGridClick(item)">
-        <view class="card-top">
-          <image class="image" :src="item.icon"/>
-          <h3 class="name u-line-1">{{ item.name }}</h3>
+          <view class="card-top">
+            <image class="image" :src="item.icon"/>
+            <h3 class="name u-line-1">{{ item.name }}</h3>
+          </view>
+          <text class="desc u-line-2">{{ item.desc }}</text>
         </view>
-        <text class="desc u-line-2">{{ item.desc }}</text>
-      </view>
+      </template>
     </view>
-    <u-toast ref="uToast"></u-toast>
+    <u-toast ref="uToast"/>
   </view>
 </template>
 

@@ -21,13 +21,15 @@
     {
       "path": "pages/toolbox/toolbox",
       "style": {
-        "navigationBarTitleText": "工具箱"
+        "navigationBarTitleText": "工具箱",
+        "disableScroll":true
       }
     },
     {
       "path": "pages/mine/mine",
       "style": {
-        "navigationBarTitleText": ""
+        "navigationBarTitleText": "",
+        "disableScroll":true
         // 我的
       }
     }

@@ -6,7 +6,7 @@
           v-model="keyword"
           :showAction="false"
           borderColor="#dadbde"
-          shape="square"
+          shape="round"
           @change="handleChangeSearch"
           clearabled/>
     </view>
@@ -16,7 +16,7 @@
           class="card-box"
           title="常用工具"
           :grid-list="searchGridList"/>
-      <u-empty v-else mode="search"/>
+      <u-empty v-else mode="search" :icon="emptySearch"/>
     </view>
   </view>
 </template>
@@ -33,7 +33,8 @@ export default {
   data() {
     return {
       keyword: '',
-      searchGridList: gridList
+      searchGridList: gridList,
+      emptySearch: require("@/static/toolbox/search.png")
     }
   },
   methods: {
@@ -61,6 +62,11 @@ export default {
   .card-list {
     padding: 20rpx;
     box-sizing: border-box;
+
+    ::v-deep .u-empty {
+      width: 100%;
+      height: 80vh;
+    }
   }
 }
 </style>

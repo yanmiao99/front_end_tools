@@ -1,14 +1,8 @@
 <template>
   <view class="about">
     <view class="header">
-      <view class="avatar">
-        <image :src="avatar" mode="aspectFill"/>
-      </view>
-      <view class="header-info">
-        <button class="login-btn" open-type="chooseAvatar" @chooseavatar="getChooseAvatar">
-          <h2>点击登录</h2>
-          <text>登录查看更多</text>
-        </button>
+      <view class="header-info u-line-2">
+        {{ headerInfo}}
       </view>
       <view class="water">
         <view class="water-c">
@@ -59,7 +53,7 @@ export default {
   name: "about",
   data() {
     return {
-      avatar: require("@/static/logo.png"),
+      headerInfo: '你的压力来源于无法自律，只是假装努力。',
       cellList: [
         {
           icon: require("@/static/about/log.png"),
@@ -115,21 +109,6 @@ export default {
         this.addAuthor.show = false
       })
     },
-    // 登录授权
-    // 授权登录
-    getChooseAvatar(e) {
-      let {avatarUrl} = e.detail;
-      this.avatar = avatarUrl
-      uni.login({
-        provider: 'weixin',
-        onlyAuthorize: true, // 微信登录仅请求授权认证
-        success: (res) => {
-          console.log(res)
-          //这里获取的是用户的code，用来换取 openid、unionid、session_key 等信息，再将信息丢给后台自己的登录业务就行了
-        }
-      })
-
-    },
   }
 }
 </script>
@@ -146,50 +125,10 @@ export default {
     box-sizing: border-box;
     position: relative;
 
-    .avatar {
-      width: 150rpx;
-      height: 150rpx;
-      border: 2px solid #fff;
-      border-radius: 50%;
-      padding: 20rpx;
-      box-sizing: border-box;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      image {
-        width: 90%;
-        height: 90%;
-        border-radius: 50%;
-        overflow: hidden;
-      }
-    }
-
-
     .header-info {
-      margin-left: 30rpx;
       color: #fff;
-
-      .login-btn {
-        border: none;
-        background: none;
-        outline: none;
-        color: #fff;
-        line-height: 50rpx;
-
-        &::after {
-          border: none !important;
-        }
-      }
-
-      h2 {
-        font-size: 36rpx;
-        font-weight: bold;
-      }
-
-      text {
-        font-size: 26rpx;
-      }
+      font-size: 36rpx;
+      font-weight: bold;
     }
 
     .water {

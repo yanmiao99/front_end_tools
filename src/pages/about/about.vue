@@ -99,6 +99,10 @@ export default {
         case '联系作者':
           this.addAuthor.show = true
           break
+        default :
+          uni.showToast({
+            title:'努力开发中...'
+          })
       }
     },
     // 保存二维码

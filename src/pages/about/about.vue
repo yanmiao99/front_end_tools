@@ -1,5 +1,5 @@
 <template>
-  <view class="mine">
+  <view class="about">
     <view class="header">
       <view class="avatar">
         <image :src="avatar" mode="aspectFill"/>
@@ -56,31 +56,31 @@
 import saveAlbum from "@/utils/saveAlbum";
 
 export default {
-  name: "mine",
+  name: "about",
   data() {
     return {
       avatar: require("@/static/logo.png"),
       cellList: [
         {
-          icon: require("@/static/mine/log.png"),
+          icon: require("@/static/about/log.png"),
           title: '更新日志',
           url: 'pages/toolbox/toolbox',
           isLink: true,
         },
         {
-          icon: require("@/static/mine/disclaimer.png"),
+          icon: require("@/static/about/disclaimer.png"),
           title: '免责声明',
           url: 'pages/toolbox/toolbox',
           isLink: true,
         },
         {
-          icon: require("@/static/mine/author_vx.png"),
+          icon: require("@/static/about/author_vx.png"),
           title: '联系作者',
           url: 'pages/toolbox/toolbox',
           isLink: false
         },
         {
-          icon: require("@/static/mine/version.png"),
+          icon: require("@/static/about/version.png"),
           title: '关于',
           url: 'pages/toolbox/toolbox',
           isLink: true
@@ -88,7 +88,7 @@ export default {
       ],
       addAuthor: {
         show: false,
-        wx_code: require("@/static/mine/wx-code.png")
+        wx_code: require("@/static/about/wx-code.png")
       }
     }
   },
@@ -135,7 +135,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.mine {
+.about {
   .header {
     width: 100%;
     height: 20vh;

@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="card-box">
     <h2 class="sub-title">{{ title }}</h2>
     <view class="card-wrapper">
       <template v-for="item in gridList">

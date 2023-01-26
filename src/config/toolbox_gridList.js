@@ -38,6 +38,6 @@ const gridList = [
         path: 'sub_add-watermark/add-watermark/add-watermark',
         isOnline: true,
         isShow: true,
-    },
+    }
 ]
 export default gridList

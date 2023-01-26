@@ -1,7 +1,8 @@
 <template>
   <view class="card-box">
     <h2 class="sub-title">{{ title }}</h2>
-    <view class="card-wrapper">
+
+    <scroll-view style="height: 80vh;" scroll-y="true" class="card-wrapper">
       <template v-for="item in gridList">
         <view
             v-if="item.isShow"
@@ -15,7 +16,8 @@
           <text class="desc u-line-2">{{ item.desc }}</text>
         </view>
       </template>
-    </view>
+    </scroll-view>
+
     <u-toast ref="uToast"/>
   </view>
 </template>

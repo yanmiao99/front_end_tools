@@ -75,6 +75,7 @@ import {getSharePoster} from '../utils/QS-SharePoster/QS-SharePoster.js';
 import saveAlbum from "@/utils/saveAlbum";
 import share from "@/mixins/share"
 import avatar_imageList from "../config/avatar_imageList";
+import uploadImage from "@/utils/uploadImage";
 
 export default {
   mixins: [share],
@@ -209,39 +210,11 @@ export default {
     },
 
     // 新版获取用户头像
-    getChooseAvatar(e) {
+    async getChooseAvatar(e) {
       console.log(e);
       let {avatarUrl} = e.detail;
-      uni.uploadFile({
-        url: 'https://tucdn.wpon.cn/api/upload',
-        filePath: avatarUrl,
-        name: 'image',
-        success: uploadFileRes => {
-          // 注意：这里返回的uploadFileRes.data 为JSON 需要自己去转换
-          let res = JSON.parse(uploadFileRes.data);
-
-          if (res.code === 200) {
-            let data = res.data
-            this.avatarImage = data.url
-          } else {
-            uni.showToast({
-              title: res.msg,
-              icon: 'error',
-              duration: 2000
-            });
-          }
-        },
-        fail: (error) => {
-          uni.showToast({
-            title: error,
-            icon: 'error',
-            duration: 2000
-          });
-        },
-        complete: () => {
-          uni.hideLoading();
-        }
-      });
+      const res = await uploadImage(avatarUrl)
+      this.avatarImage = res.url
     },
   }
 };

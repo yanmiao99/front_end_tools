@@ -20,19 +20,21 @@ const saveToAlbum = (url) => {
                                 return uni.showToast({
                                     title: "保存成功！",
                                     icon: 'success',
-                                    duration: 2000,
+                                    duration: 3000,
                                 });
                             },
                             fail: (res) => {
                                 console.log(res.errMsg);
                                 return uni.showToast({
                                     icon: 'error',
-                                    duration: 2000,
+                                    duration: 3000,
                                     title: res.errMsg,
                                 });
                             },
                             complete: (res) => {
-                                uni.hideLoading();
+                                setTimeout(()=>{
+                                    uni.hideLoading();
+                                },1000)
                             },
                         });
                     },
@@ -69,7 +71,7 @@ const saveToAlbum = (url) => {
                         return uni.showToast({
                             title: "保存成功！",
                             icon: 'success',
-                            duration: 2000,
+                            duration: 3000,
                         });
                     },
                     fail: (res) => {
@@ -78,12 +80,14 @@ const saveToAlbum = (url) => {
                         return uni.showToast({
                             title: res.errMsg,
                             icon: 'error',
-                            duration: 2000,
+                            duration: 3000,
                         });
                     },
                     //无论成功失败都走的回调
                     complete: (res) => {
-                        uni.hideLoading();
+                        setTimeout(()=>{
+                            uni.hideLoading();
+                        },1000)
                     },
                 });
             }

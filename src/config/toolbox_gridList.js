@@ -31,5 +31,13 @@ const gridList = [
         isOnline: true,
         isShow: false,
     },
+    {
+        icon: require("@/static/toolbox/add-watermark.png"),
+        name: '图片加水印',
+        desc: '用于给图片添加自定义水印',
+        path: 'sub_add-watermark/add-watermark/add-watermark',
+        isOnline: true,
+        isShow: true,
+    },
 ]
 export default gridList

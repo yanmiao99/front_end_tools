@@ -38,6 +38,14 @@ const gridList = [
         path: 'sub_add-watermark/add-watermark/add-watermark',
         isOnline: true,
         isShow: true,
-    }
+    },
+    {
+        icon: require("@/static/toolbox/raise-card.png"),
+        name: '举牌小人',
+        desc: '用于生成举牌小人图片',
+        path: 'sub_raise-card/raise-card/raise-card',
+        isOnline: true,
+        isShow: true,
+    },
 ]
 export default gridList

@@ -22,20 +22,33 @@
       "path": "pages/toolbox/toolbox",
       "style": {
         "navigationBarTitleText": "工具箱",
-        "disableScroll":true
+        "disableScroll": true
       }
     },
     {
       "path": "pages/about/about",
       "style": {
         "navigationBarTitleText": "",
-        "disableScroll":true
+        "disableScroll": true
         // 关于
       }
     }
   ],
   // 分包
   "subPackages": [
+    {
+      "name": "raise-card",
+      "root": "sub_raise-card",
+      "pages": [
+        {
+          "path": "raise-card/raise-card",
+          "style": {
+            "navigationBarTitleText": "举牌小人",
+            "navigationBarTextStyle": "white"
+          }
+        }
+      ]
+    },
     {
       "name": "add-watermark",
       "root": "sub_add-watermark",

@@ -2,7 +2,7 @@ const gridList = [
     {
         icon: require("@/static/toolbox/image-bed.png"),
         name: '图床',
-        desc: '用户返回用户上传图片后的链接',
+        desc: '用于返回用户上传图片后的链接',
         path: 'sub_image-bed/image-bed/image-bed',
         isOnline: true,
         isShow: true,
@@ -30,14 +30,6 @@ const gridList = [
         path: 'sub_avatar-generate/avatar-generate/avatar-generate',
         isOnline: true,
         isShow: true,
-    },
-    {
-        icon: require("@/static/toolbox/dialogue-video.png"),
-        name: '情侣视频',
-        desc: '收集了比较多的情侣对话视频',
-        path: 'sub_dialogue-video/dialogue-video/dialogue-video',
-        isOnline: true,
-        isShow: false,
     },
     {
         icon: require("@/static/toolbox/add-watermark.png"),

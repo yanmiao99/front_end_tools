@@ -121,19 +121,6 @@
           }
         }
       ]
-    },
-    {
-      "name": "dialogue-video",
-      "root": "sub_dialogue-video",
-      "pages": [
-        {
-          "path": "dialogue-video/dialogue-video",
-          "style": {
-            "navigationBarTitleText": "情侣视频",
-            "navigationBarTextStyle": "white"
-          }
-        }
-      ]
     }
   ],
   // 预加载分包

@@ -132,7 +132,9 @@
       "packages": [
         "avatar-generate",
         "interest-calculator",
-        "rate-calculator"
+        "rate-calculator",
+        "add-watermark",
+        "raise-card"
       ]
     }
   },

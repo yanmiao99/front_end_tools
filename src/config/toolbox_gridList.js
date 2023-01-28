@@ -1,5 +1,13 @@
 const gridList = [
     {
+        icon: require("@/static/toolbox/image-bed.png"),
+        name: '图床',
+        desc: '用户返回用户上传图片后的链接',
+        path: 'sub_image-bed/image-bed/image-bed',
+        isOnline: true,
+        isShow: true,
+    },
+    {
         icon: require("@/static/toolbox/rate-calculator.png"),
         name: '商户费率计算器',
         desc: '用于计算商户在客人扫码付款后, 最终能够拿到多少钱',
@@ -46,6 +54,6 @@ const gridList = [
         path: 'sub_raise-card/raise-card/raise-card',
         isOnline: true,
         isShow: true,
-    },
+    }
 ]
 export default gridList

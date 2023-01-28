@@ -36,6 +36,14 @@ export default {
   },
   methods: {
     async handleGenerateImage() {
+      if (!this.textContent) {
+        uni.showToast({
+          icon: 'error',
+          title: '请输入文字'
+        })
+        return
+      }
+
       uni.showLoading({
         title: '生成中...'
       })

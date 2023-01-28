@@ -37,6 +37,19 @@
   // 分包
   "subPackages": [
     {
+      "name": "image-bed",
+      "root": "sub_image-bed",
+      "pages": [
+        {
+          "path": "image-bed/image-bed",
+          "style": {
+            "navigationBarTitleText": "图床",
+            "navigationBarTextStyle": "white"
+          }
+        }
+      ]
+    },
+    {
       "name": "raise-card",
       "root": "sub_raise-card",
       "pages": [
@@ -134,7 +147,8 @@
         "interest-calculator",
         "rate-calculator",
         "add-watermark",
-        "raise-card"
+        "raise-card",
+        "image-bed"
       ]
     }
   },

@@ -41,8 +41,11 @@
 <script>
 
 import uploadImage from "@/utils/uploadImage";
+import share from "@/mixins/share";
 
 export default {
+  mixins: [share],
+
   name: "image-bed",
   data() {
     return {

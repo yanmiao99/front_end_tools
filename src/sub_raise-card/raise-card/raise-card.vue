@@ -25,8 +25,11 @@
 <script>
 import saveAlbum from "@/utils/saveAlbum";
 import base64ToSrc from "@/utils/base64ToSrc";
+import share from "@/mixins/share";
 
 export default {
+  mixins: [share],
+
   name: "raise-card",
   data() {
     return {

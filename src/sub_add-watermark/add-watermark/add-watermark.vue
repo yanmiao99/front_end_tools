@@ -31,8 +31,11 @@
 import uploadImage from "@/utils/uploadImage";
 import saveAlbum from "@/utils/saveAlbum";
 import base64ToSrc from "@/utils/base64ToSrc";
+import share from "@/mixins/share";
 
 export default {
+  mixins: [share],
+
   name: "add-watermark",
   data() {
     return {

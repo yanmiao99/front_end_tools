@@ -121,6 +121,19 @@
           }
         }
       ]
+    },
+    {
+      "name": "image-color-identify",
+      "root": "sub_image-color-identify",
+      "pages": [
+        {
+          "path": "image-color-identify/image-color-identify",
+          "style": {
+            "navigationBarTitleText": "图片颜色识别",
+            "navigationBarTextStyle": "white"
+          }
+        }
+      ]
     }
   ],
   // 预加载分包
@@ -135,7 +148,8 @@
         "rate-calculator",
         "add-watermark",
         "raise-card",
-        "image-bed"
+        "image-bed",
+        "image-color-identify"
       ]
     }
   },

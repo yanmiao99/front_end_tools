@@ -8,6 +8,14 @@ const gridList = [
         isShow: true,
     },
     {
+        icon: require("@/static/toolbox/image-color-identify.png"),
+        name: '图片颜色识别',
+        desc: '用于识别图片主要的组成颜色',
+        path: 'sub_image-color-identify/image-color-identify/image-color-identify',
+        isOnline: true,
+        isShow: true,
+    },
+    {
         icon: require("@/static/toolbox/rate-calculator.png"),
         name: '商户费率计算器',
         desc: '用于计算商户在客人扫码付款后, 最终能够拿到多少钱',

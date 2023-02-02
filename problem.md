@@ -10,7 +10,13 @@
 
 [最新uniApp微信小程序获取头像open-type=“chooseAvatar“ @chooseavatar方法 (betheme.net)](https://betheme.net/xiaochengxu/37610.html?action=onClick)
 
-
+### uniapp开发中 scss 穿透不生效的问题 
+> 在组件中添加如下代码即可 (和 data 同级)
+```javascript
+options: {
+    styleIsolation: 'shared'
+}
+```
 
 ### 国庆头像小程序的开发者 github 
 

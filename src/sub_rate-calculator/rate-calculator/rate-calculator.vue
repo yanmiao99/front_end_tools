@@ -20,7 +20,7 @@
       </u-form-item>
     </u--form>
     <!-- 规则 -->
-    <view class="computer-rule">
+    <view class="tips">
       <text>Tips:</text>
       <view>1、使用前请先检查本页面的计算结果和您的预期是否一致，如果一致请再继续使用，否则此处可能不符合您的实际情况;
       </view>
@@ -96,15 +96,6 @@ export default {
 
   .btn {
     margin: 30rpx 0;
-  }
-
-  .computer-rule {
-    color: $u-tips-color;
-
-    view {
-      margin: 20rpx 0;
-      font-size: 30rpx;
-    }
   }
 }
 </style>

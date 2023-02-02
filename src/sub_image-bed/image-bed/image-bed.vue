@@ -1,20 +1,6 @@
 <template>
   <view class="wrapper">
-
-    <view class="upload-box">
-      <u-upload
-          :fileList="fileList"
-          @afterRead="handleAfterRead"
-          @delete="handleDeletePic"
-          multiple
-          accept="image"
-          :maxCount="1"
-          :capture="['album', 'camera']"
-          width="208"
-          height="208"
-          uploadText="请上传图片"
-      />
-    </view>
+    <upload-image-box :value.sync="uploadInfo"/>
     <view class="operation-area" v-if="JSON.stringify(uploadInfo) !== '{}'">
       <u-button text="点击复制链接" @tap="handleBtnCopyText"/>
     </view>
@@ -40,8 +26,8 @@
 
 <script>
 
-import uploadImage from "@/utils/uploadImage";
 import share from "@/mixins/share";
+
 
 export default {
   mixins: [share],
@@ -49,33 +35,10 @@ export default {
   name: "image-bed",
   data() {
     return {
-      fileList: [], // 所上传的视频的列表
       uploadInfo: {}, // 上传视频后的信息
     }
   },
   methods: {
-    // 删除图片
-    handleDeletePic(event) {
-      this.fileList.splice(event.index, 1)
-    },
-
-    // 上传图片
-    async handleAfterRead(event) {
-      this.fileList.push({
-        ...event.file,
-        status: 'uploading',
-        message: '上传中'
-      })
-      const url = event.file[0].url
-      const result = await uploadImage(url)
-      this.fileList.splice(0, 1, Object.assign(this.fileList[0], {
-        status: 'success',
-        message: '上传成功',
-        url: result.url
-      }))
-      this.uploadInfo = result
-    },
-
     // 复制链接
     handleBtnCopyText() {
       uni.setClipboardData({
@@ -94,37 +57,10 @@ export default {
 
 <style scoped lang="scss">
 .wrapper {
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
-  .upload-box {
-    width: 400rpx;
-    height: 400rpx;
-    margin: 100rpx auto;
-    border: 4rpx dashed $uni-color-primary;
-    background: #F4F5F7;
-    border-radius: 20rpx;
-    overflow: hidden;
-
-    ::v-deep .uicon-camera-fill {
-      font-size: 200rpx !important;
-      margin-bottom: 100rpx !important;
-    }
-
-    ::v-deep .u-upload__deletable {
-      background-color: rgba(55, 55, 55, 0.8);
-      height: 80rpx;
-      width: 80rpx;
-
-      .uicon-close {
-        font-size: 60rpx !important;
-        line-height: normal !important;
-      }
-    }
-  }
 
   .operation-area {
     width: 80% !important;
@@ -144,18 +80,6 @@ export default {
         width: 100% !important;
         height: 100% !important;
       }
-    }
-
-  }
-
-  .tips {
-    color: $u-tips-color;
-    width: 90%;
-    margin: 0 auto;
-
-    view {
-      margin: 20rpx 0;
-      font-size: 30rpx;
     }
   }
 }

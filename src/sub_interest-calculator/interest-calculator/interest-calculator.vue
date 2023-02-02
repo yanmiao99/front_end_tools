@@ -30,7 +30,7 @@
       </u-form-item>
     </u--form>
     <!-- 规则 -->
-    <view class="computer-rule">
+    <view class="tips">
       <text>Tips:</text>
       <view>
         注意 : 银行业统一规定计算利息或利率一个月按照三十天计算，一年按照三百六十天计算。
@@ -103,15 +103,6 @@ export default {
 
   .btn {
     margin: 30rpx 0;
-  }
-
-  .computer-rule {
-    color: $u-tips-color;
-
-    view {
-      margin: 20rpx 0;
-      font-size: 30rpx;
-    }
   }
 }
 </style>

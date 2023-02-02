@@ -27,6 +27,7 @@
 <script>
 
 import share from "@/mixins/share";
+import copyText from "@/utils/copyText";
 
 
 export default {
@@ -41,15 +42,7 @@ export default {
   methods: {
     // 复制链接
     handleBtnCopyText() {
-      uni.setClipboardData({
-        data: this.uploadInfo.url,//要被复制的内容
-        success: () => {//复制成功的回调函数
-          uni.showToast({//提示
-            title: `复制成功`,
-            icon: 'success'
-          })
-        }
-      }, true);
+      copyText(this.uploadInfo.url)
     },
   }
 }
@@ -81,6 +74,10 @@ export default {
         height: 100% !important;
       }
     }
+  }
+
+  .tips{
+    width: 90%;
   }
 }
 </style>

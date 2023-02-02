@@ -1,57 +1,43 @@
 <template>
   <view class="wrapper">
-    <view class="upload-box">
-      <u-upload
-          :fileList="fileList"
-          @afterRead="handleAfterRead"
-          @delete="handleDeletePic"
-          multiple
-          accept="image"
-          :maxCount="1"
-          :capture="['album', 'camera']"
-          width="312"
-          height="312"
-          uploadText="请上传需要处理的图片"
-      />
+    <upload-image-box :value.sync="uploadInfo"/>
+    <view class="result-box" v-if="resultList.length > 0">
+      <u-grid :border="false" col="4">
+        <u-grid-item
+            v-for="(item,index) in resultList"
+            :key="index"
+            @click="handleGridClick(item)">
+          <view class="grid-box" :style="{background:item}"/>
+          <text class="grid-text">{{ item }}</text>
+        </u-grid-item>
+      </u-grid>
     </view>
   </view>
 </template>
 
 <script>
 import share from "@/mixins/share";
-import uploadImage from "@/utils/uploadImage";
+import copyText from "@/utils/copyText";
+import rgb2hex from "@/utils/rgb2hex";
 
 export default {
   mixins: [share],
   name: "image_color_identify",
   data() {
     return {
-      fileList: [], // 所上传的视频的列表
+      uploadInfo: {},
+      resultList: []
+    }
+  },
+  watch: {
+    'uploadInfo.url': {
+      async handler() {
+        await this.identifyImageFn(this.uploadInfo.url)
+      },
+      deep: true
     }
   },
   methods: {
-    // 删除图片
-    handleDeletePic(event) {
-      this.fileList.splice(event.index, 1)
-    },
-
-    // 上传图片
-    async handleAfterRead(event) {
-      this.fileList.push({
-        ...event.file,
-        status: 'uploading',
-        message: '上传中'
-      })
-      const url = event.file[0].url
-      const result = await uploadImage(url)
-      this.fileList.splice(0, 1, Object.assign(this.fileList[0], {
-        status: 'success',
-        message: '上传成功',
-        url: result.url
-      }))
-
-      await this.identifyImageFn(result.url)
-    },
 
     // 识别图片
     async identifyImageFn(url) {
@@ -64,15 +50,30 @@ export default {
         uni.showToast({
           title: data.msg
         })
-        console.log(data);
+        let tempArr = data.rgb_all.split(";").splice(0, 8)
+        tempArr.forEach(item => {
+          this.resultList.push(rgb2hex(item))
+        })
       }
     },
+    handleGridClick(item) {
+      copyText(item)
+    }
   }
 }
 </script>
 
 <style scoped lang="scss">
+.wrapper {
+  .result-box {
+    width: 630rpx;
+    margin: 0 auto;
+  }
 
+  .grid-box {
+    width: 140rpx;
+    height: 140rpx;
+  }
 
-
+}
 </style>

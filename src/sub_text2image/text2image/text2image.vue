@@ -1,15 +1,22 @@
 <template>
   <view class="wrapper">
-    <view class="btn-group">
+    <view class="operation-area">
       <u--input
           placeholder="请输入需要生成文字的内容"
           border="surround"
           v-model="textContent"
       />
-      <u-button
-          type="primary"
-          text='点击生成'
-          @tap="handleGenerateImage"/>
+      <view class="btn-group">
+        <u-button
+            type="primary"
+            text='生成举牌小人'
+            @tap="handleGenerateImage('raise')"/>
+        <u-button
+            type="primary"
+            disabled
+            text='生成白底黑字'
+            @tap="handleGenerateImage('black')"/>
+      </view>
     </view>
 
     <view class="image-box" v-if="imgBase64">
@@ -30,7 +37,7 @@ import share from "@/mixins/share";
 export default {
   mixins: [share],
 
-  name: "raise-card",
+  name: "text2image",
   data() {
     return {
       textContent: '',
@@ -38,7 +45,7 @@ export default {
     }
   },
   methods: {
-    async handleGenerateImage() {
+    async handleGenerateImage(type) {
       if (!this.textContent) {
         uni.showToast({
           icon: 'error',
@@ -50,12 +57,21 @@ export default {
       uni.showLoading({
         title: '生成中...'
       })
-      const {data} = await this.$http.get(`https://v.api.aa1.cn/api/api-jupai/index.php?msg=${this.textContent}`, {
-        responseType: 'arraybuffer'
-      })
-      this.imgBase64 = 'data:image/png;base64,' + uni.arrayBufferToBase64(data)
+
+      if (type === 'raise') {
+        let url = `https://v.api.aa1.cn/api/api-jupai/index.php?msg=${this.textContent}`
+        const {data} = await this.$http.get(url, {
+          responseType: 'arraybuffer'
+        })
+        this.imgBase64 = 'data:image/png;base64,' + uni.arrayBufferToBase64(data)
+      } else if (type === 'black') {
+
+      }
+
+
       uni.hideLoading()
     },
+
     handleSaveImage() {
       const imgUrl = base64ToSrc(this.imgBase64, 'raiseCard')
       saveAlbum(imgUrl)
@@ -73,11 +89,20 @@ export default {
   align-items: center;
   flex-direction: column;
 
-  .btn-group {
+  .operation-area {
     width: 100%;
 
+  }
+
+  .btn-group {
+    margin-top: 20rpx;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     ::v-deep .u-button {
-      margin: 30rpx 0;
+      width: 48% !important;
     }
   }
 

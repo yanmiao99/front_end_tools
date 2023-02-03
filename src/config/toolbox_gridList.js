@@ -48,10 +48,10 @@ const gridList = [
         isShow: true,
     },
     {
-        icon: require("@/static/toolbox/raise-card.png"),
-        name: '举牌小人',
-        desc: '用于生成举牌小人图片',
-        path: 'sub_raise-card/raise-card/raise-card',
+        icon: require("@/static/toolbox/text2image.png"),
+        name: '文字转图片',
+        desc: '用于生成文字转图片',
+        path: 'sub_text2image/text2image/text2image',
         isOnline: true,
         isShow: true,
     }

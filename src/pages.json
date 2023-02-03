@@ -50,13 +50,13 @@
       ]
     },
     {
-      "name": "raise-card",
-      "root": "sub_raise-card",
+      "name": "text2image",
+      "root": "sub_text2image",
       "pages": [
         {
-          "path": "raise-card/raise-card",
+          "path": "text2image/text2image",
           "style": {
-            "navigationBarTitleText": "举牌小人",
+            "navigationBarTitleText": "文字转图片",
             "navigationBarTextStyle": "white"
           }
         }
@@ -147,7 +147,7 @@
         "interest-calculator",
         "rate-calculator",
         "add-watermark",
-        "raise-card",
+        "text2image",
         "image-bed",
         "image-color-identify"
       ]

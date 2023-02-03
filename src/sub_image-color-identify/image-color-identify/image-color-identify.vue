@@ -50,10 +50,13 @@ export default {
         uni.showToast({
           title: data.msg
         })
-        let tempArr = data.rgb_all.split(";").splice(0, 8)
+        console.log(data);
+        let tempArr = data.rgb_all.split(";").splice(0, 9)
+        this.resultList = []
         tempArr.forEach(item => {
           this.resultList.push(rgb2hex(item))
         })
+        this.resultList.unshift(data.hex)
       }
     },
     handleGridClick(item) {
@@ -73,6 +76,7 @@ export default {
   .grid-box {
     width: 140rpx;
     height: 140rpx;
+    margin-bottom: 20rpx;
   }
 
 }
